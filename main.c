@@ -60,6 +60,7 @@ int one_two(int *ar1, int le1, int *ar2, int le2, int *ar3) {
 
 }
 void randomfill(int *arr, int len, int max, int r);
+void statfinder(int *arr, int len);
 
 int main() {
     srand(time(NULL));
@@ -69,10 +70,14 @@ int main() {
     int T2[7] = {1,  7, 8, 9, 10, 11, 12};
     int T3[12] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     int T[N];
+    int Ts[N];
     randomfill(T, N, 20, 10);
-    for (int i = 0; i < N; i++){
-        printf("%d ", T[i]);
+    for (int i = 0; i < N; i++) {
+        Ts[i] = T[i];
+        printf("%d ", Ts[i]);
     }
+    printf("\n");
+    statfinder(Ts, N);
 //    randomfill(t1, 30, 10, 1);
 //    randomfill(t2, 35, 10, 1);
 //    for (int i = 0; i < 30; i++)
@@ -87,4 +92,20 @@ int main() {
 void randomfill(int *arr, int len, int max, int r) {
     for (int i = 0; i < len; i++)
         arr[i] = (rand() % max) + 1 - r;
+}
+
+void  statfinder(int *arr, int len) {
+    for (int i = 0; i < len; i++){
+        float ni = 1;
+        printf("%d ", arr[i]);
+        for (int j = 0; j < len; j++) {
+            if (i != j ) {
+                if (arr[i] == arr[j])
+                    ni++;
+
+            }
+        }
+        float percent = (ni / len) * 100;
+        printf(" wystepuje %f % \n", percent);
+    }
 }
