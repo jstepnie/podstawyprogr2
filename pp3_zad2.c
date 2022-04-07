@@ -38,6 +38,21 @@ char* getHexAscii(char c) {
     return tablica;
 }
 
+int intToCharArray(char* a, int in) {
+	int len, t = in;
+	
+	for (len = 0; t != 0; len++)
+		t /= 10;
+	
+	for (int i = len - 1; i >= 0; i--) {
+		a[i] = (in % 10) + 48;
+		in /= 10;
+	}
+	
+	return len;
+}
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
